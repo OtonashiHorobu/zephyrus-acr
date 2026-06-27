@@ -1,0 +1,16 @@
+<rml>
+<head>
+    <title>Window</title>
+    <style>
+        body
+        {
+            width: 400dp;
+            height: 300dp;
+
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+</body>
+</rml>

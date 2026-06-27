@@ -8,8 +8,8 @@
 
 #if ZEPHYRUS_OS_LINUX
 __attribute__((constructor)) void zephyrus_ctor() noexcept {
-    zephyrus::setup_log();
-    auto logger = spdlog::get("zephyrus");
+    zephyrus::log::setup_logger();
+    auto logger{spdlog::get("zephyrus")};
     SPDLOG_LOGGER_INFO(logger, zephyrus::full_version());
 }
 #endif
