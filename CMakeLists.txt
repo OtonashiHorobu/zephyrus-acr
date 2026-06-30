@@ -3,7 +3,7 @@
 # SPDX-FileCopyrightText: Copyright (c) 2026 Otonashi Horobu
 
 cmake_minimum_required(VERSION 4.2)
-project(ZephyrusACR LANGUAGES C CXX)
+project(Zephyrus LANGUAGES C CXX)
 
 set(BUILD_SHARED_LIBS OFF)
 set(BUILD_TESTING ON)
