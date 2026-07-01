@@ -22,7 +22,7 @@ int zephyrus::init() {
     }
     ZEPHYRUS_INFO(version::full_version());
     if (auto result{rmlui_manager_.init()}; !result) {
-        ZEPHYRUS_CRITICAL("failed to initialse rmlui: {}", result.error());
+        ZEPHYRUS_CRITICAL("failed to initialize rmlui: {}", result.error());
         return 1;
     }
     return 0;

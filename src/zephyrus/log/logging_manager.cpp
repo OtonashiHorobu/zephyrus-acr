@@ -12,7 +12,7 @@
 namespace zephyrus::log {
 logging_manager::result_type logging_manager::init_impl() noexcept {
     using namespace spdlog;
-    if (get(ZEPHYRUS_LOGGER_NAME)) { // already exists
+    if (get(ZEPHYRUS_LOGGER_NAME) || spdlog::thread_pool()) { // already exists
         return std::unexpected{"logger already initialized"};
     }
     init_thread_pool(8192, 1);

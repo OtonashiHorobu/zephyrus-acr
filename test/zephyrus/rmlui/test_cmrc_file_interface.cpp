@@ -22,7 +22,7 @@ int main() {
     using zephyrus::rmlui::cmrc_file_interface;
 
     auto fs{cmrc::zephyrus::asset::test::get_filesystem()};
-    constexpr const int thread_count{8};
+    constexpr int thread_count{8};
 
     zephyrus::log::logging_manager logging_manager{};
     if (auto result{logging_manager.init()}; !result) {
