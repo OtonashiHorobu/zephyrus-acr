@@ -11,12 +11,11 @@ struct cmrc_file_handle_data {
     cmrc::file::iterator cursor;
 
     explicit cmrc_file_handle_data(const cmrc::file f) noexcept
-        : file{f}, cursor{file.begin()} {}
+        : file{std::move(f)}, cursor{file.begin()} {}
 }; // namespace zephyrus::rmlui
 
-cmrc_file_interface::cmrc_file_interface(
-    const cmrc::embedded_filesystem &fs) noexcept
-    : fs_{fs} {}
+cmrc_file_interface::cmrc_file_interface(cmrc::embedded_filesystem fs) noexcept
+    : fs_{std::move(fs)} {}
 
 cmrc_file_interface::~cmrc_file_interface() noexcept {
     std::lock_guard lock{mutex_};

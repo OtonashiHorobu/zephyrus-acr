@@ -2,15 +2,15 @@
 //
 // SPDX-FileCopyrightText: Copyright(c) 2026 Otonashi Horobu
 
-#include <zephyrus/asset/ui.hpp>
-#include <zephyrus/rmlui/rmlui.hpp>
+#include <zephyrus/rmlui/rmlui_manager.hpp>
 
 #include <RmlUi/Core/Core.h>
 
 namespace zephyrus::rmlui {
-void rmlui::init() {
-    file_interface_ = std::make_unique<cmrc_file_interface>(
-        cmrc::zephyrus::asset::ui::get_filesystem());
+rmlui_manager::result_type rmlui_manager::init_impl() noexcept {
     Rml::SetFileInterface(file_interface_.get());
+    return {};
 }
+
+rmlui_manager::~rmlui_manager() noexcept { Rml::SetFileInterface(nullptr); }
 } // namespace zephyrus::rmlui

@@ -95,6 +95,7 @@ target_link_libraries(zephyrus-core PUBLIC
     fmt::fmt
     spdlog::spdlog
     RmlUi::Core
+    Boost.DI
 )
 target_compile_options(zephyrus-core PRIVATE -Werror)
 
@@ -118,5 +119,4 @@ foreach(test_case ${TEST_SRCS})
     add_test(${test_name} ${PROJECT_BINARY_DIR}/${test_name})
 endforeach()
 
-target_link_libraries(cmrc-file-interface-test PRIVATE Zephyrus::Asset::Test)
-target_link_libraries(cmrc-file-interface-thread-test PRIVATE Zephyrus::Asset::Test)
+target_link_libraries(test-cmrc-file-interface PRIVATE Zephyrus::Asset::Test)

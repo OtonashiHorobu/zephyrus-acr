@@ -7,6 +7,6 @@
 
 #if ZEPHYRUS_OS_LINUX
 __attribute__((constructor)) void zephyrus_ctor() noexcept {
-    zephyrus::global_zephyrus().init();
+    zephyrus::g_zephyrus().init();
 }
 #endif

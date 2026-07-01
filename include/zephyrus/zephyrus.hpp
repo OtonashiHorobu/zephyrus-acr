@@ -4,16 +4,23 @@
 
 #pragma once
 
-#include <zephyrus/rmlui/rmlui.hpp>
+#include <zephyrus/log/logging_manager.hpp>
+#include <zephyrus/rmlui/rmlui_manager.hpp>
 
 namespace zephyrus {
 class zephyrus {
   public:
+    explicit zephyrus(rmlui::rmlui_manager rmlui_manager,
+                      log::logging_manager logging_manager)
+        : rmlui_manager_{std::move(rmlui_manager)},
+          logging_manager_{std::move(logging_manager)} {}
+
     int init();
 
   private:
-    rmlui::rmlui rmlui_;
+    rmlui::rmlui_manager rmlui_manager_;
+    log::logging_manager logging_manager_;
 };
 
-zephyrus &global_zephyrus() noexcept;
+zephyrus &g_zephyrus() noexcept;
 } // namespace zephyrus

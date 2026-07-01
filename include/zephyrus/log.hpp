@@ -44,7 +44,3 @@
 #define ZEPHYRUS_LOGGER_WARN SPDLOG_LOGGER_WARN
 #define ZEPHYRUS_LOGGER_ERROR SPDLOG_LOGGER_ERROR
 #define ZEPHYRUS_LOGGER_CRITICAL SPDLOG_LOGGER_CRITICAL
-
-namespace zephyrus::log {
-void init_logger();
-} // namespace zephyrus::log

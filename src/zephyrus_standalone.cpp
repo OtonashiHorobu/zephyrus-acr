@@ -4,4 +4,4 @@
 
 #include <zephyrus/zephyrus.hpp>
 
-int main() { zephyrus::global_zephyrus().init(); }
+int main() { zephyrus::g_zephyrus().init(); }

@@ -11,6 +11,7 @@ function(setup_dependencies)
     CPMAddPackage("gh:gabime/spdlog@1.17.0#79524ddd08a4ec981b7fea76afd08ee05f83755d")
     CPMAddPackage("gh:fmtlib/fmt@12.2.0#1be298e1bd68957e4cd352e1f676f00e07dcfb57")
     CPMAddPackage("gh:boost-ext/ut@2.3.1#f923e6fe4b7542d75e0c4ee54ad0af6a5382a87c")
+    CPMAddPackage("gh:boost-ext/di@1.3.2#629454327c37cb1ed86c7b1b33e955c942bbf537")
 
     CPMAddPackage(
         URI "gh:madler/zlib@1.3.2#da607da739fa6047df13e66a2af6b8bec7c2a498"
