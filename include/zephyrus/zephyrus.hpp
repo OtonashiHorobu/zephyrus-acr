@@ -11,7 +11,7 @@ namespace zephyrus {
 class zephyrus {
   public:
     explicit zephyrus(rmlui::rmlui_manager rmlui_manager,
-                      log::logging_manager logging_manager)
+                      log::logging_manager logging_manager) noexcept
         : rmlui_manager_{std::move(rmlui_manager)},
           logging_manager_{std::move(logging_manager)} {}
 

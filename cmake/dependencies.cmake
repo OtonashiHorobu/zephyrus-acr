@@ -6,12 +6,36 @@ message(STATUS "[Zephyrus ACR] Downloading CPM...")
 include("${PROJECT_SOURCE_DIR}/cmake/get-cpm.cmake")
 
 function(setup_dependencies)
-    CPMAddPackage("gh:TheLartians/Ccache.cmake@1.2.5#639f153a960f04407618a68d4dc68c9e6c3cd10d")
-    CPMAddPackage("gh:vector-of-bool/cmrc@2.0.1#952ffddba731fc110bd50409e8d2b8a06abbd237")
-    CPMAddPackage("gh:gabime/spdlog@1.17.0#79524ddd08a4ec981b7fea76afd08ee05f83755d")
-    CPMAddPackage("gh:fmtlib/fmt@12.2.0#1be298e1bd68957e4cd352e1f676f00e07dcfb57")
-    CPMAddPackage("gh:boost-ext/ut@2.3.1#f923e6fe4b7542d75e0c4ee54ad0af6a5382a87c")
-    CPMAddPackage("gh:boost-ext/di@1.3.2#629454327c37cb1ed86c7b1b33e955c942bbf537")
+    CPMAddPackage(
+        URI "gh:TheLartians/Ccache.cmake@1.2.5#639f153a960f04407618a68d4dc68c9e6c3cd10d"
+        OVERRIDE_FIND_PACKAGE
+    )
+
+    CPMAddPackage(
+        URI "gh:vector-of-bool/cmrc@2.0.1#952ffddba731fc110bd50409e8d2b8a06abbd237"
+        OVERRIDE_FIND_PACKAGE
+        OPTIONS "CMAKE_POLICY_VERSION_MINIMUM 4.0"
+    )
+
+    CPMAddPackage(
+        URI "gh:gabime/spdlog@1.17.0#79524ddd08a4ec981b7fea76afd08ee05f83755d"
+        OVERRIDE_FIND_PACKAGE
+    )
+
+    CPMAddPackage(
+        URI "gh:fmtlib/fmt@12.2.0#1be298e1bd68957e4cd352e1f676f00e07dcfb57"
+        OVERRIDE_FIND_PACKAGE
+    )
+
+    CPMAddPackage(
+        URI "gh:boost-ext/ut@2.3.1#f923e6fe4b7542d75e0c4ee54ad0af6a5382a87c"
+        OVERRIDE_FIND_PACKAGE
+    )
+
+    CPMAddPackage(
+        URI "gh:boost-ext/di@1.3.2#629454327c37cb1ed86c7b1b33e955c942bbf537"
+        OVERRIDE_FIND_PACKAGE
+    )
 
     CPMAddPackage(
         URI "gh:madler/zlib@1.3.2#da607da739fa6047df13e66a2af6b8bec7c2a498"
@@ -47,6 +71,7 @@ function(setup_dependencies)
         OVERRIDE_FIND_PACKAGE
         OPTIONS
         "BROTLI_DISABLE_TESTS ON"
+        "BROTLI_BUILD_TOOLS OFF"
     )
     set(BROTLIDEC_LIBRARIES brotlidec CACHE INTERNAL "Force freetype to use our brotlidec" FORCE)
     set(BROTLIDEC_INCLUDE_DIRS "${PROJECT_BINARY_DIR}/_deps/brotli-src/c/include" CACHE INTERNAL "Force freetype to use our brotlidec" FORCE)
@@ -86,7 +111,40 @@ function(setup_dependencies)
         "SKIP_INSTALL_ALL ON"
     )
     add_library(Freetype::Freetype ALIAS freetype)
+
+    CPMAddPackage(
+        URI "gh:Samsung/rlottie@0.2#bf689b72b8482c5ea674235854bd11b6d1b42588"
+        OVERRIDE_FIND_PACKAGE
+        OPTIONS
+        "CMAKE_POLICY_VERSION_MINIMUM 4.0"
+        "LOTTIE_MODULE OFF"
+    )
+
+    CPMAddPackage(
+        URI "gh:LuaJIT/LuaJIT@2.1#a2bde60819d83e6f75130ac2c93ee4b3c7615800"
+        OVERRIDE_FIND_PACKAGE
+    )
+
+    CPMAddPackage(
+        URI "gh:ThePhD/sol2@3.5.0#c1f95a773c6f8f4fde8ca3efe872e7286afe4444"
+        OVERRIDE_FIND_PACKAGE
+        OPTIONS
+        "SOL2_LUA_VERSION LuaJIT"
+        "SOL2_BUILD_LUA OFF"
+    )
+
+    CPMAddPackage(
+        URI "gh:sammycage/lunasvg@1.3.3#2872affa1027cad92a05408a7e6f2547efa7f364"
+        OVERRIDE_FIND_PACKAGE
+    )
+
     CPMAddPackage(
         URI "gh:mikke89/RmlUi@6.2#2230d1a6e8e0848ed87a5761e2a5160b2a175ba4"
+        OVERRIDE_FIND_PACKAGE
+        OPTIONS
+        "RMLUI_LOTTIE_PLUGIN ON"
+        "RMLUI_SVG_PLUGIN ON"
+        "RMLUI_LUA_BINDINGS ON"
+        "RMLUI_LUA_BINDINGS_LIBRARY luajit"
     )
 endfunction()

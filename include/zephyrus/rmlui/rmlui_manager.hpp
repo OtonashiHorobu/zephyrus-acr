@@ -12,7 +12,9 @@
 namespace zephyrus::rmlui {
 class rmlui_manager : public abstract::manager<rmlui_manager> {
   public:
-    explicit rmlui_manager(std::shared_ptr<cmrc_file_interface> file_interface)
+    rmlui_manager() noexcept : manager<rmlui_manager>{} {}
+    explicit rmlui_manager(
+        std::shared_ptr<cmrc_file_interface> file_interface) noexcept
         : manager<rmlui_manager>{}, file_interface_{std::move(file_interface)} {
     }
     ~rmlui_manager() noexcept;

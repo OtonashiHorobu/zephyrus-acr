@@ -87,7 +87,8 @@ include_directories(
 )
 
 
-file(GLOB_RECURSE ZEPHYRUS_CORE_SRCS "${PROJECT_BINARY_DIR}/version.cpp" "${PROJECT_SOURCE_DIR}/src/zephyrus/*.cpp")
+file(GLOB_RECURSE ZEPHYRUS_CORE_SRCS "${PROJECT_SOURCE_DIR}/src/zephyrus/*.cpp")
+list(APPEND ZEPHYRUS_CORE_SRCS "${PROJECT_BINARY_DIR}/version.cpp")
 add_library(zephyrus-core STATIC ${ZEPHYRUS_CORE_SRCS})
 add_library(Zephyrus::Core ALIAS zephyrus-core)
 target_link_libraries(zephyrus-core PUBLIC
@@ -96,6 +97,7 @@ target_link_libraries(zephyrus-core PUBLIC
     spdlog::spdlog
     RmlUi::Core
     Boost.DI
+    sol2::sol2
 )
 target_compile_options(zephyrus-core PRIVATE -Werror)
 

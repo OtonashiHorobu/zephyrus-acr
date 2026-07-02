@@ -30,6 +30,7 @@ logging_manager::result_type logging_manager::init_impl() noexcept {
 #endif
     );
     register_logger(zephyrus_logger);
+    spdlog::set_default_logger(zephyrus_logger);
     return {};
 }
 } // namespace zephyrus::log
